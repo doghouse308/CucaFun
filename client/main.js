@@ -6,6 +6,7 @@ import { browserHistory } from 'react-router';
 
 import { routes, onAuthChange } from '../imports/routes/routes';
 import { NavBar, onSideBarChange } from '../imports/ui/navBar';
+import '../imports/api/profiles';
 import '../imports/startup/simple-schema-configuration.js';
 
 Tracker.autorun(() => {
@@ -40,5 +41,6 @@ Meteor.startup(() => {
   Session.set('isFindFun', true);
   Session.set('isAdmin', true);
   Session.set('isAdminOpen', false);
+
   ReactDOM.render(routes, document.getElementById('app'));
 });

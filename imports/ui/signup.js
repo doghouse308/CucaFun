@@ -31,13 +31,13 @@ export  class Signup extends React.Component {
         this.setState({ error: '' });
       }
     });
-    // this.props.createProfile({ email, firstName, lastName }, (err) => {
-    //   if (err){
-    //     this.setState({error:  err.reason});
-    //   }  else {
-    //     this.setState({error: ''});
-    //   }
-    // });
+    this.props.createProfile({ email, firstName, lastName }, (err) => {
+      if (err){
+        this.setState({error:  err.reason});
+      }  else {
+        this.setState({error: ''});
+      }
+    });
   }
   render() {
     return (
@@ -48,8 +48,8 @@ export  class Signup extends React.Component {
           {this.state.error ? <p>{this.state.error}</p> : undefined}
 
           <form className="boxed-view__form" onSubmit={this.onSubmit.bind(this)} noValidate>
-            {/*<input type="text" ref="firstName" name="firstName" placeholder=" First Name" value=""/>
-            <input type="text" ref="lastName" name="lastName" placeholder=" Last Name" value=""/>*/}
+            <input type="text" ref="firstName" name="firstName" placeholder=" First Name" value=""/>
+            <input type="text" ref="lastName" name="lastName" placeholder=" Last Name" value=""/>
             <input type="email" ref="email" name="email" placeholder="Email" />
             <input type="password" ref="password" name="password" placeholder="Password" />
             <button className="button">Create Account</button>
@@ -64,11 +64,11 @@ export  class Signup extends React.Component {
 
 Signup.propTypes = {
   createUser: PropTypes.func.isRequired,
-  // createProfile:  PropTypes.func.isRequired
+  createProfile:  PropTypes.func.isRequired
 };
 export default createContainer(() => {
   return  {
     createUser: Accounts.createUser,
-    // createProfile: Meteor.call('profiles.insert')
+    createProfile: Meteor.call('profiles.insert')
   };
 },  Signup) ;
